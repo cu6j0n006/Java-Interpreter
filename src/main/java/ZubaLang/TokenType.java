@@ -1,4 +1,4 @@
-package fr.univ_amu.l3mi;
+package ZubaLang;
 
 enum TokenType {
     // Single-character tokens
@@ -19,19 +19,18 @@ enum TokenType {
 
     // zubaLang-specific keywords
     LET,             // Kirundi-style variable declaration
-    FATA,            // "fata" → function declaration
-    SUBIRA,        // "gusubira" → for loop
-    NIMBA,           // "nimba" → if
-    KANDI,           // "kandi" → else if
-    ATARIVYO,       // "bitarivyo" → else
-    ANDIKA,         // "andika" → print
-    SOMA,            // "soma" → input
-    UBUSA,             // "ubusa" → null / none
-    KORA,            // "kora" → do/execute (optional utility)
-    ISUBIRA,         // Optional: while-like loop
+    FATA,            // "fata" -> function declaration
+    SUBIRA,        // "gusubira" -> for loop
+    NIMBA,           // "nimba" -> if
+    KANDI,           // "kandi" -> else if
+    ATARIVYO,       // "bitarivyo" -> else
+    ANDIKA,         // "andika" -> print
+    SOMA,            // "soma" -> input
+    UBUSA,             // "ubusa" -> null / none
+    MUGIHE,         // Optional: while loop
     SUBIZA,         // "SUBIZA": return statement
-    NIVY0,           // Optional: "truth" (true)
-    SIVYO,        // Optional: "falsehood" (false)
+    NIVY0,           // "true" (true)
+    SIVYO,        //  "false"
 
     // End of input
     EOF

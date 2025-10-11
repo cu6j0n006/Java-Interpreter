@@ -1,9 +1,7 @@
-package fr.univ_amu.l3mi;
-
+package ZubaLang;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 class Scanner {

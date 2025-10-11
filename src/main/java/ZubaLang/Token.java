@@ -1,4 +1,4 @@
-package fr.univ_amu.l3mi;
+package ZubaLang;
 
 class Token {
     final TokenType type;
