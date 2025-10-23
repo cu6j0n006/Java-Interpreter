@@ -17,9 +17,11 @@ class Scanner {
         keywords.put("na", TokenType.AND);
     }
 
-    Scanner (String source){
+    public Scanner (String source){
         this.source = source;
     }
+    
+    
     List<Token> scanTokens(){
         while(!isAtEnd()){
             start = current;
