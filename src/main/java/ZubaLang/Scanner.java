@@ -15,6 +15,7 @@ class Scanner {
     static {
         keywords = new HashMap<>();
         keywords.put("na", TokenType.AND);
+
     }
 
     public Scanner (String source){
