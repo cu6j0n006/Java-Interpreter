@@ -1,2 +1,2 @@
 # Java-Interpreter
-A basic Java interpreter for a custom Language in Kirundi Called Zuba
+A basic Java interpreter for a custom Language in Kirundi Called ZubaLang
