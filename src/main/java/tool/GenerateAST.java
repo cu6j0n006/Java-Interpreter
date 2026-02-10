@@ -45,7 +45,7 @@ public class GenerateAST {
         writer.println(" public " +className+"(" +fields+"){");
         String[] fieldNames = fields.split(",");
         for (String fieldName : fieldNames){
-            String name = fieldName.split(" ")[1];
+             String name = fieldName.split(" ")[1];
             writer.println("this."+fieldName+" = "+ name) ;
         }
         writer.println();
