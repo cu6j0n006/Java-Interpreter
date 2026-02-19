@@ -87,7 +87,6 @@ class Scanner {
                 }else {
                     Zuba.error(line, "Unexpected character");
                 }
-                Zuba.error(line, "Unexpected character in expression");
                 break;
         }
     }
