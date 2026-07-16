@@ -42,19 +42,22 @@ public class GenerateAST {
         writer.println("static class "+className+ " extends " + baseName + " {");
 
         writer.println();
+
+        // constructor
         writer.println(" public " +className+"(" +fields+"){");
         String[] fieldNames = fields.split(",");
         for (String fieldName : fieldNames){
              String name = fieldName.split(" ")[1];
-            writer.println("this."+fieldName+" = "+ name) ;
+            writer.println("    this."+fieldName+" = "+ name) ;
         }
-        writer.println();
+        writer.println("    }");
 
         //fields
+        writer.println();
         for(String fieldName : fieldNames){
             writer.println("final "+fieldName); 
         }
-        writer.println();
+        writer.println("}");
 
     }
 }

@@ -11,6 +11,10 @@ binary -> expression operator expression
 
 operator -> "==" | "!=" | "<" | "<=" | ">" | ">=" | "+" | "-" | "*" | "/" ;
 
+comparison -> term(('>' | '>=' | '<' | '<=') term)*
+
+unary -> ( "!" | "-" ) unary | primary ;
+primary -> NUMBER | STRING | "true" | "false" | "nil" | "(" expression ")" ;
 
 
 The Language allow multiple aliases of the same token, depending on the user's language preferences.

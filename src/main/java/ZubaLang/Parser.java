@@ -3,7 +3,7 @@ package ZubaLang;
 import java.util.ArrayList;
 import java.util.List;
 
-import static ZubaLang.TokenType.EOF;
+import static ZubaLang.TokenType.*;
 
 
 public class Parser {
@@ -14,16 +14,16 @@ public class Parser {
     }
 
     //equality -> comparison ( ( "!=" | "==" ) comparison )* ;
-    private Expr expression(){
+    private Expression expression(){
         return equality();
     }
 
-    private Expr equality(){
-        Expr expr = comparison();
+    private Expression equality(){
+        Expression expr = comparison();
         while(match (BANG_EQUAL, EQUAL_EQUAL)){
             Token operator = previous();
-            Expr right = comparison ();
-            expr = new Expr.Binary(expr, operator, right);
+            Expression right = comparison ();
+            expr = new Expression.Binary(expr, operator, right);
         }
         return expr;
     }
@@ -70,5 +70,62 @@ public class Parser {
      * */
     private Token previous(){
         return tokens.get(current-1);
+    }
+
+    private Expression comparison(){
+        Expression expr = term();
+        while (match(GREATER, GREATER_EQUAL, LESS, LESS_EQUAL)){
+            Token operator = previous();
+            Expression rigth = term();
+            expr = new Expression.Binary(expr, operator, rigth);
+
+        }
+        return expr;
+    }
+
+    private Expression term(){
+        Expression expr = factor();
+        while (match(MINUS, PLUS)){
+            Token operator = previous();
+            Expression right = factor ();
+            expr = new Expression.Binary(expr, operator, right);
+        }
+        return expr;
+    }
+
+    private Expression factor(){
+        Expression expr = unary();
+        while (match(SLASH, STAR)){
+            Token operator = previous();
+            Expression right = unary();
+            expr = new Expression.Binary(expr, operator, right);
+        }
+        return expr;
+    }
+
+    private Expression unary() {
+        if (match(BANG, MINUS)){
+            Token operator = previous();
+            Expression right = unary();
+            return new Expression.Unary(operator, right);
+        }
+        return primary();
+    }
+
+    private Expression primary() {
+        if(match(FALSE)) return new Expression.Literal(false);
+        if(match(TRUE)) return new Expression.Literal(true);
+        if (match(NULL)) return new Expression.Literal(null);
+
+        if (match(NUMBER, STRING)){
+            return new Expression.Literal(previous().literal);
+        }
+
+        if (match(LEFT_PAREN)){
+            Expression expr = expression();
+            //consume(RIGHT_PAREN, "Expect ')' after expression.");
+            return new Expression.Grouping(expr);
+        }
+        return null;
     }
 }

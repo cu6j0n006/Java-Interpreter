@@ -17,3 +17,10 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
+// Define a task to run the GenerateAST tool
+tasks.register<JavaExec>("generateAst") {
+    classpath = sourceSets.main.get().runtimeClasspath
+    mainClass.set("tool.GenerateAST")
+    args("src/main/java/ZubaLang")
+}

@@ -16,4 +16,27 @@ abstract class Expression {
             this.right = right;
         }
     }
+
+    static class Unary extends Expression {
+        final Token operator;
+        final Expression right;
+        Unary(Token operator, Expression right) {
+            this.operator = operator;
+            this.right = right;
+        }
+    }
+
+    static class Literal extends Expression {
+        final Object literal;
+        Literal(Object literal) {
+            this.literal = literal;
+        }
+    }
+
+    static class Grouping extends Expression {
+        final Expression expr;
+        Grouping(Expression expr) {
+            this.expr = expr;
+        }
+    }
 }
